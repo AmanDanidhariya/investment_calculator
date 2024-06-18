@@ -1,24 +1,4 @@
-import React, { useState } from "react";
-
-const UserInput = () => {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  function handleChange(inputIdentifier, newValue) {
-    setUserInput((prevUserInput) => {
-      return {
-        ...prevUserInput,
-        [inputIdentifier]: newValue,
-      };
-    });
-  }
-
-  console.log(userInput);
-
+const UserInput = ({ onChange, userInput }) => {
   return (
     <section id="user-input">
       <div className="input-group">
@@ -28,7 +8,7 @@ const UserInput = () => {
             type="number"
             name="initialInvestment"
             value={userInput.initialInvestment}
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onChange={(e) => onChange(e.target.name, e.target.value)}
             required
           />
         </p>
@@ -38,7 +18,7 @@ const UserInput = () => {
             type="number"
             name="annualInvestment"
             value={userInput.annualInvestment}
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onChange={(e) => onChange(e.target.name, e.target.value)}
             required
           />
         </p>
@@ -48,7 +28,7 @@ const UserInput = () => {
             type="number"
             name="expectedReturn"
             value={userInput.expectedReturn}
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onChange={(e) => onChange(e.target.name, e.target.value)}
             required
           />
         </p>
@@ -58,7 +38,7 @@ const UserInput = () => {
             type="number"
             name="duration"
             value={userInput.duration}
-            onChange={(e) => handleChange(e.target.name, e.target.value)}
+            onChange={(e) => onChange(e.target.name, e.target.value)}
             required
           />
         </p>
